@@ -9,7 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: production
+    environment:
+      name: production
 
     steps:
       - name: Checkout repository
@@ -30,6 +31,17 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t ci-cd -f docker/Dockerfile .
+
+      - name: Verify Docker secrets
+        run: |
+          echo "Checking secrets..."
+          if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then
+            echo "❌ DOCKER_USERNAME missing"
+            exit 1
+          else
+            echo "✅ DOCKER_USERNAME found"
+          fi
+
 
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login \
