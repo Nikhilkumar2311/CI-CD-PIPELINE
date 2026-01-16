@@ -49,3 +49,4 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/ci-cd-pipeline:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/ci-cd-pipeline:${{ github.sha }}
+          
