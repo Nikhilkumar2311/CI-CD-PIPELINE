@@ -62,6 +62,14 @@ This ensures reliable and predictable pipeline execution.
 
 ---
 
+## Containerization
+- Application is fully containerized using Docker
+- Production-optimized Dockerfile with minimal base image
+- Docker image builds are validated inside CI
+- Ensures environment consistency across development and CI
+
+---
+
 ## 🧠 Engineering Considerations
 ### CI Job Termination
 A key consideration in this project is ensuring that CI steps:
