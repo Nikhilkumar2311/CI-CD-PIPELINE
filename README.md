@@ -32,7 +32,11 @@ The goal of this repository is to showcase:
 │ └── ci.yml
 │
 ├── scripts/
+|
 ├── docker/
+│   ├── Dockerfile
+│   └── .dockerignore
+|
 ├── docs/
 │
 ├── .gitignore
@@ -67,6 +71,14 @@ This ensures reliable and predictable pipeline execution.
 - Production-optimized Dockerfile with minimal base image
 - Docker image builds are validated inside CI
 - Ensures environment consistency across development and CI
+
+---
+
+## Image Registry & Versioning
+- Docker images are built and pushed automatically via CI
+- Images are published to Docker Hub
+- Each build is tagged using both `latest` and commit SHA
+- Enables traceability, rollback, and reproducible deployments
 
 ---
 
