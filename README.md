@@ -20,30 +20,6 @@ The goal of this repository is to showcase:
 
 ---
 
-## 📂 Repository Structure
-
-├── app/
-│ ├── index.js
-│ ├── test.js
-│ └── package.json
-│
-├── .github/
-│ └── workflows/
-│ └── ci.yml
-│
-├── scripts/
-|
-├── docker/
-│   ├── Dockerfile
-│   └── .dockerignore
-|
-├── docs/
-│
-├── .gitignore
-└── README.md
-
----
-
 ## ⚙️ CI/CD Workflow
 The pipeline is triggered automatically on:
 - Every push to the `main` branch
@@ -66,7 +42,7 @@ This ensures reliable and predictable pipeline execution.
 
 ---
 
-## Containerization
+## 🐳Containerization
 - Application is fully containerized using Docker
 - Production-optimized Dockerfile with minimal base image
 - Docker image builds are validated inside CI
@@ -74,7 +50,7 @@ This ensures reliable and predictable pipeline execution.
 
 ---
 
-## Image Registry & Versioning
+## 📝Image Registry & Versioning
 - Docker images are built and pushed automatically via CI
 - Images are published to Docker Hub
 - Each build is tagged using both `latest` and commit SHA
