@@ -58,6 +58,14 @@ This ensures reliable and predictable pipeline execution.
 
 ---
 
+## ♾️Automated Deployment
+- Docker images are deployed automatically to AWS EC2
+- CI connects securely via SSH
+- EC2 pulls versioned images from Docker Hub
+- Containers are replaced on each deployment
+- No manual server intervention required
+
+
 ## 🧠 Engineering Considerations
 ### CI Job Termination
 A key consideration in this project is ensuring that CI steps:

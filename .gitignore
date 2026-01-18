@@ -1,2 +1,4 @@
 .env
 node_modules
+ci-ec2-key
+ci-ec2-key.pub
