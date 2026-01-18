@@ -15,7 +15,7 @@ if docker ps -a | grep -q $APP_NAME; then
 fi
 
 docker run -d \
-  --name $APP_NAME
+  --name $APP_NAME \
   -p 3000:3000 \
   $IMAGE
 
