@@ -58,13 +58,22 @@ This ensures reliable and predictable pipeline execution.
 
 ---
 
-## ♾️Automated Deployment
+## 🔁Automated Deployment
 - Docker images are deployed automatically to AWS EC2
 - CI connects securely via SSH
 - EC2 pulls versioned images from Docker Hub
 - Containers are replaced on each deployment
 - No manual server intervention required
 
+---
+
+## ❤️‍🩹Health Checks & Rollback
+- Deployments validate application health before switching traffic
+- Failed deployments are automatically rolled back
+- Containers are replaced only after passing health checks
+- Prevents downtime and broken releases
+
+---
 
 ## 🧠 Engineering Considerations
 ### CI Job Termination
