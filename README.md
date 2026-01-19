@@ -11,6 +11,10 @@ The goal of this repository is to showcase:
 
 ---
 
+<img width="2074" height="5021" alt="Image" src="https://github.com/user-attachments/assets/9dc0f9e5-712d-4a70-b834-05de88f32cda" />
+
+---
+
 ## 🛠 Tech Stack
 - **CI/CD:** GitHub Actions
 - **Containerization:** Docker
