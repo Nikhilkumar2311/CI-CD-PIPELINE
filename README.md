@@ -87,6 +87,8 @@ This ensures reliable and predictable pipeline execution.
 
 ## 📊 Monitoring & Observability
 
+<img width="3343" height="1516" alt="Image" src="https://github.com/user-attachments/assets/a1c895d9-c0a1-4875-a90e-8615fc77f171" />
+
 This project includes a full monitoring and logging stack:
 
 ### Metrics
