@@ -71,11 +71,39 @@ This ensures reliable and predictable pipeline execution.
 
 ---
 
-## ❤️‍🩹Health Checks & Rollback
-- Deployments validate application health before switching traffic
-- Failed deployments are automatically rolled back
-- Containers are replaced only after passing health checks
-- Prevents downtime and broken releases
+## ❤️‍🩹 Health Checks (Current)
+- Application exposes a `/health` endpoint
+- Used to validate container readiness post-deployment
+- Enables future rollback and zero-downtime strategies
+
+---
+
+## 🔄 Rollback Strategy (Planned)
+- Automatic rollback on failed health checks is planned
+- Will be implemented using versioned Docker image tags
+- Previous stable image will be restored on failure
+
+---
+
+## 📊 Monitoring & Observability
+
+This project includes a full monitoring and logging stack:
+
+### Metrics
+- **Prometheus** scrapes application metrics
+- Alert rules can be defined for availability and performance
+
+### Logs
+- **Promtail** collects Docker container logs
+- **Loki** stores and indexes logs centrally
+
+### Visualization
+- **Grafana** dashboards for:
+  - Application metrics
+  - Container health
+  - Centralized logs
+
+Monitoring is deployed alongside the application using Docker Compose.
 
 ---
 
