@@ -1,0 +1,21 @@
+groups:
+- name: node-app-alerts
+  rules:
+
+  - alert: AppDown
+    expr: up{job="node-app"} == 0
+    for: 10s
+    labels:
+      severity: critical
+    annotations:
+      summary: "Node app is down"
+      description: "Prometheus cannot scrape the Node app."
+
+  - alert: HighMemoryUsage
+    expr: process_resident_memory_bytes > 200000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "High memory usage"
+      description: "Node app memory usage is high"
