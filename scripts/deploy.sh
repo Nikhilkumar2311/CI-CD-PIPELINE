@@ -36,6 +36,13 @@ echo "🚀 Deploying image: $IMAGE"
 
 docker pull "$IMAGE"
 
+# Clean up any leftover green container from a previous deploy
+if docker ps -a --format '{{.Names}}' | grep -q "^${NEW_CONTAINER}$"; then
+  echo "🧹 Removing leftover green container"
+  docker stop "$NEW_CONTAINER" 2>/dev/null || true
+  docker rm "$NEW_CONTAINER" 2>/dev/null || true
+fi
+
 echo "▶️ Starting new container on port 3001"
 docker run -d \
   --name "$NEW_CONTAINER" \

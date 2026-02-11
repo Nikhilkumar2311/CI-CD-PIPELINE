@@ -71,6 +71,13 @@ resource "aws_security_group" "app_sg" {
   }
 
   ingress {
+    from_port = 3010
+    to_port = 3010
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port = 9090
     to_port = 9090
     protocol = "tcp"
