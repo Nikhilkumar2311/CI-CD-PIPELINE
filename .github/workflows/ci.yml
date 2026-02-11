@@ -95,30 +95,30 @@ jobs:
       #       ./scripts/deploy.sh \
       #       ${{ secrets.DOCKER_USERNAME }}/ci-cd-pipeline:${{ github.sha }}
 
-      - name: Sync files to EC2
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "monitoring/,scripts/"
-          target: "/home/${{ secrets.EC2_USER }}"
-          overwrite: true
+      # - name: Sync files to EC2
+      #   uses: appleboy/scp-action@v0.1.7
+      #   with:
+      #     host: ${{ secrets.EC2_HOST }}
+      #     username: ${{ secrets.EC2_USER }}
+      #     key: ${{ secrets.EC2_SSH_KEY }}
+      #     source: "monitoring/,scripts/"
+      #     target: "/home/${{ secrets.EC2_USER }}"
+      #     overwrite: true
 
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            # Ensure scripts are executable
-            chmod +x ~/scripts/*.sh
+      # - name: Deploy to EC2
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.EC2_HOST }}
+      #     username: ${{ secrets.EC2_USER }}
+      #     key: ${{ secrets.EC2_SSH_KEY }}
+      #     script: |
+      #       # Ensure scripts are executable
+      #       chmod +x ~/scripts/*.sh
 
-            # Deploy Monitoring
-            cd ~/monitoring
-            docker compose -f docker-compose.monitoring.yml up -d --remove-orphans
+      #       # Deploy Monitoring
+      #       cd ~/monitoring
+      #       docker compose -f docker-compose.monitoring.yml up -d --remove-orphans
 
-            # Deploy App
-            cd ~
-            ./scripts/deploy.sh ${{ secrets.DOCKER_USERNAME }}/ci-cd-pipeline:${{ github.sha }}
+      #       # Deploy App
+      #       cd ~
+      #       ./scripts/deploy.sh ${{ secrets.DOCKER_USERNAME }}/ci-cd-pipeline:${{ github.sha }}
