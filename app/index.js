@@ -20,10 +20,13 @@ register.registerMetric(httpRequestCounter);
 
 // HTTP SERVER
 
-const server = http.createServer(async(req, res) => {
-  if (req.url === "/health") {
+const server = http.createServer(async (req, res) => {
+  if (req.url === "/health/liveness") {
     res.writeHead(200);
-    res.end("OK");
+    res.end("Alive");
+  } else if (req.url === "/health/readiness") {
+    res.writeHead(200);
+    res.end("Ready");
   } else if (req.url === "/metrics") {
     res.writeHead(200, { "Content-Type": register.contentType });
     const metrics = await register.metrics();

@@ -49,6 +49,12 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/ci-cd-pipeline:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/ci-cd-pipeline:${{ github.sha }}
+      
+      # - name: Update Kubernetes Image Version and Deploy
+      #   run: |
+      #     cd k8s/overlays/prod
+      #     kustomize edit set image my-ci-cd-app=my-ci-cd-app:${{ github.sha }}
+      #     kubectl apply -k .
 
       # - name: Deploy to EC2
       #   uses: appleboy/ssh-action@v1.0.3
