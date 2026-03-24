@@ -71,29 +71,22 @@ This ensures reliable and predictable pipeline execution.
 
 ---
 
-## 🔁Automated Deployment
+## ☸️ Kubernetes Architecture
 
-- Docker images are deployed automatically to AWS EC2
-- CI connects securely via SSH
-- EC2 pulls versioned images from Docker Hub
-- Containers are replaced on each deployment
-- No manual server intervention required
-
----
-
-## ❤️‍🩹 Health Checks (Current)
-
-- Application exposes a `/health` endpoint
-- Used to validate container readiness post-deployment
-- Enables future rollback and zero-downtime strategies
+- The application is orchestrated using **Kubernetes** to achieve high availability and auto-scaling.
+- Configurations follow the **DRY principle** using **Kustomize** overlays for distinct `dev` and `prod` environments.
+- Implements strict **Resource Limits**, **Non-Root Security Contexts**, and **Pod Anti-Affinity** for production readiness.
+- Scalability is managed dynamically via a **Horizontal Pod Autoscaler (HPA)**.
+- Uptime during node maintenance is guaranteed using **Pod Disruption Budgets (PDB)**.
 
 ---
 
-## 🔄 Rollback Strategy (Planned)
+## 🔁 Automated Deployment & Rollback
 
-- Automatic rollback on failed health checks is planned
-- Will be implemented using versioned Docker image tags
-- Previous stable image will be restored on failure
+- CI/CD pipeline dynamically injects specific Git Commit SHAs into the Kustomize manifest during deployment (`kustomize edit set image`).
+- Advanced routing and TLS termination is managed via an **Nginx Ingress Controller**.
+- Health checks are split into granular **Liveness** (`/health/liveness`) and **Readiness** (`/health/readiness`) probes.
+- Enables true **Zero-Downtime Rolling Updates** and instant, deterministic rollbacks to previous ReplicaSets.
 
 ---
 
